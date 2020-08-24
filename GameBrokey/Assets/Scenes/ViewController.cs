@@ -15,14 +15,26 @@ public class ViewController : MonoBehaviour
     [SerializeField]
     private Text _name;
 
+    [SerializeField]
+    private Button RandomizeButton;
+
     public void Start()
     {
-        SetViewData();
+        RefreshData();
     }
 
-    public void SetViewData()
+    public void RefreshData() // Check this method - are there issues? 
     {
-        _name.text = _viewData.Name;
+        _name.text = _viewData.name;
+
         _statsWidget.BindNewData(_viewData);
+
+        RandomizeButton.onClick.AddListener(OnRandomizeClicked);
+    }
+
+    private void OnRandomizeClicked()
+    {
+        // TODO : Randomize the data from MySO and update the screen
+        RefreshData();
     }
 }
